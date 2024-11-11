@@ -6,7 +6,7 @@ const App = () => {
 
   const navbars = [];
   for (let i = 1; i <= navbarCount; i++) {
-    navbars.push(<Navbars number={i} />);
+    navbars.push(<Navbars key={i} number={i} />);
   }
 
   return <>{navbars}</>;
