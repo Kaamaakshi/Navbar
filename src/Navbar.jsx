@@ -1,39 +1,72 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import screenfull from "screenfull";
 import "./Navbars.css";
 
-function Navbar({ number }) {
-  const [userData, setUserData] = useState(null);
+function Navbar() {
+  const [usersData, setUsersData] = useState([]);
+  const [fullScreenMode, setFullScreenMode] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    axios.get("https://randomuser.me/api/").then((response) => {
-      const user = response.data.results[0];
+    const fetchUsersData = async () => {
+      try {
+        const response = await axios.get(
+          "https://randomuser.me/api/?results=6"
+        );
+        const users = response.data.results.map((user, index) => ({
+          id: user.login.uuid,
+          name: `${user.name.first} ${user.name.last}`,
+          avatar: user.picture.large,
+          score: 52375,
+          number: index + 1,
+          email: user.email,
+        }));
+        setUsersData(users);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-      setUserData(user);
-    });
+    fetchUsersData();
   }, []);
 
-  if (!userData) {
+  const toggleFullScreen = () => {
+    if (screenfull.isEnabled) {
+      screenfull.toggle(containerRef.current);
+      setFullScreenMode(!fullScreenMode);
+    }
+  };
+
+  if (usersData.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="navbar">
-      <div className="header">
-        <div className="profile">
-          <div className="number">{number}</div>
-          <div className="img">
-            <img src={userData.picture.medium} alt="User" />
+    <div
+      ref={containerRef}
+      className={`navbar ${fullScreenMode ? "full-screen" : ""}`}
+    >
+      <button className="fullscreen-toggle" onClick={toggleFullScreen}>
+        {fullScreenMode ? "Exit Full Screen" : "Enter Full Screen"}
+      </button>
+      {usersData.map((user) => (
+        <div
+          key={user.id}
+          className="profile"
+          style={{ width: fullScreenMode ? "90%" : "800px" }}
+        >
+          <div className="number">{user.number}</div>
+          <div className="avatar">
+            <img src={user.avatar} alt="User Avatar" />
           </div>
-          <div className="profile-details">
-            <div className="name">
-              {userData.name.first} {userData.name.last}
-            </div>
-            <div className="email">{userData.email}</div>{" "}
+          <div className="info">
+            <div className="name">{user.name}</div>
+            <div className="email">{user.email}</div>
           </div>
+          <div className="score">&pound; {user.score.toLocaleString()}</div>
         </div>
-        <div className="score">&pound; 52,375</div>
-      </div>
+      ))}
     </div>
   );
 }
