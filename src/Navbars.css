@@ -61,6 +61,7 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
+
 .navbar {
   display: flex;
   flex-direction: column;
@@ -68,101 +69,99 @@
   transition: all 0.3s ease;
 }
 
-/* Fullscreen toggle button style */
 .fullscreen-toggle {
-  padding: 10px 20px; /* Adjust padding */
-  font-size: 16px; /* Font size */
-  font-weight: bold; /* Bold text */
-  background-color: #333; /* Dark background color */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
-  margin-top: 20px; /* Space above the button */
-  display: inline-block; /* Make the button inline */
-  text-align: center; /* Center text */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  display: inline-block;
+  text-align: center;
 }
 
 .fullscreen-toggle:hover {
-  background-color: #555; /* Change background color on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 .fullscreen-toggle:focus {
-  outline: none; /* Remove default focus outline */
+  outline: none;
 }
 
 .fullscreen-toggle:active {
-  background-color: #222; /* Darker color when button is pressed */
+  background-color: #222;
 }
 
 @media (max-width: 768px) {
   .fullscreen-toggle {
-    font-size: 14px; /* Smaller font size for smaller screens */
-    padding: 8px 16px; /* Adjust padding for smaller screens */
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 480px) {
   .fullscreen-toggle {
-    font-size: 12px; /* Even smaller font size on very small screens */
-    padding: 6px 12px; /* Smaller padding for mobile screens */
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
-/* Basic navbar styles */
+
 .navbar {
-  width: 90%; /* Default width */
-  margin: 0 auto; /* Center the navbar */
-  transition: width 0.3s ease; /* Smooth transition for width */
+  width: 90%;
+  margin: 0 auto;
+  transition: width 0.3s ease;
 }
 
 .navbar.full-screen {
-  width: 100%; /* Increase width to 100% when in full-screen mode */
+  width: 100%;
 }
 
 .fullscreen-toggle {
-  padding: 10px 20px; /* Adjust padding */
-  font-size: 16px; /* Font size */
-  font-weight: bold; /* Bold text */
-  background-color: #333; /* Dark background color */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
-  margin-top: 20px; /* Space above the button */
-  display: inline-block; /* Make the button inline */
-  text-align: center; /* Center text */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  display: inline-block;
+  text-align: center;
 }
 
 .fullscreen-toggle:hover {
-  background-color: #555; /* Change background color on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 .fullscreen-toggle:focus {
-  outline: none; /* Remove default focus outline */
+  outline: none;
 }
 
 .fullscreen-toggle:active {
-  background-color: #222; /* Darker color when button is pressed */
+  background-color: #222;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    width: 100%; /* For smaller screens, make it 100% */
+    width: 100%;
   }
 
   .fullscreen-toggle {
-    font-size: 14px; /* Smaller font size for smaller screens */
-    padding: 8px 16px; /* Adjust padding for smaller screens */
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 480px) {
   .fullscreen-toggle {
-    font-size: 12px; /* Even smaller font size on very small screens */
-    padding: 6px 12px; /* Smaller padding for mobile screens */
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
